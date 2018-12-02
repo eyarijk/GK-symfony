@@ -1,0 +1,16 @@
+<form method="get">
+    <div class="input-group mb-10">
+        <input type="text" class="form-control" value="{{ newsQuery }}" name="q" placeholder="Search for...">
+    </div>
+    <div class="input-group mb-10">
+        <input name="from" id="datepicker" autocomplete="off" value="{{ fromDate|date('Y-m-d') }}" class="form-control" />
+    </div>
+    <div class="input-group mb-10">
+        <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Go!</button>
+        </span>
+    </div>
+    {% block proverb %}
+        If you can’t be good, be careful.
+    {% endblock %}
+</form>

@@ -1,0 +1,18 @@
+body {
+    padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.highlighted {
+    font-weight: 800;
+    color: #ea6868;;
+}
