@@ -1,6 +1,6 @@
 'use strict';
 
-let datepicker = $('#datepicker');
+let datepicker = $('#datepicker,.datepicker');
 
 if (datepicker.length > 0) {
     datepicker.datepicker({
