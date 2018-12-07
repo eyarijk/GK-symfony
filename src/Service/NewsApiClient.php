@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-class NewsApi
+class NewsApiClient
 {
     /**
      * API uri for news
@@ -27,7 +27,7 @@ class NewsApi
     private $sortBy;
 
     /**
-     * NewsApi constructor.
+     * constructor.
      * @param string $apiKey
      * @param string $sortBy
      */
@@ -40,7 +40,7 @@ class NewsApi
 
     /**
      * @param \DateTime $date
-     * @return NewsApi
+     * @return NewsApiClient
      */
     public function setDate(\DateTime $date): self
     {
@@ -50,7 +50,7 @@ class NewsApi
 
     /**
      * @param string $sortBy
-     * @return NewsApi
+     * @return NewsApiClient
      */
     public function setSortBy(string $sortBy): self
     {
