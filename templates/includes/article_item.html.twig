@@ -1,0 +1,10 @@
+<div class="card mb-4">
+    <img class="card-img-top" src="{{ article.urlToImage }}" alt="{{ article.title }}">
+    <div class="card-body">
+        <h2 class="card-title">{% filter title %}{{ article.title }}{% endfilter %}</h2>
+        <p class="card-text">{{ article.description|found(newsQuery)|raw }}</p>
+    </div>
+    <div class="card-footer text-muted">
+        Posted on {{ article.publishedAt|date('Y-m-d') }} by {{ article.author }}
+    </div>
+</div>

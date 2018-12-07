@@ -10,12 +10,12 @@ class FilterTwig extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('my_ucfirst',[$this,'ucFirst']),
+            new TwigFilter('found',[$this,'found']),
         ];
     }
 
-    public function ucFirst(string $string): string
+    public function found(string $text,string $world): string
     {
-        return \ucfirst($string);
+        return str_ireplace($world, "<span class=\"highlighted\">$world</span>", $text);
     }
 }
