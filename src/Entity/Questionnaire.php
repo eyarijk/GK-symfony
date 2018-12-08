@@ -16,12 +16,7 @@ class Questionnaire
      *     type="integer",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
-     * )
+     *
      */
     protected $age;
 
@@ -95,12 +90,12 @@ class Questionnaire
     /**
      * @Assert\NotNull
      * @Assert\Date
-     * @var string A "Y-m-d" formatted value
+     * @var \DateTime|string A "Y-m-d" formatted value
      */
     protected $dateOfBirth;
 
     /**
-     * @return mixed
+     * @return int|null
      */
     public function getAge(): ?int
     {
@@ -108,7 +103,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getUrl(): ?string
     {
@@ -116,7 +111,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getEmail(): ?string
     {
@@ -124,7 +119,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getPhone(): ?string
     {
@@ -132,7 +127,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getLocale(): ?string
     {
@@ -140,7 +135,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getCountry(): ?string
     {
@@ -148,7 +143,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return bool|null
      */
     public function getMarried(): ?bool
     {
@@ -156,7 +151,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getLastName(): ?string
     {
@@ -164,7 +159,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getHobby(): ?string
     {
@@ -172,7 +167,7 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getFirstName(): ?string
     {
@@ -180,9 +175,9 @@ class Questionnaire
     }
 
     /**
-     * @return mixed
+     * @return \DateTime|null
      */
-    public function getDateOfBirth(): ?string
+    public function getDateOfBirth(): ?\DateTime
     {
         return $this->dateOfBirth;
     }
@@ -196,7 +191,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $email
+     * @param null|string $email
      */
     public function setEmail(?string $email): void
     {
@@ -204,7 +199,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $hobby
+     * @param null|string $hobby
      */
     public function setHobby(?string $hobby): void
     {
@@ -212,7 +207,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $url
+     * @param null|string $url
      */
     public function setUrl(?string $url): void
     {
@@ -220,7 +215,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $phone
+     * @param null|string $phone
      */
     public function setPhone(?string $phone): void
     {
@@ -228,7 +223,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $locale
+     * @param null|string $locale
      */
     public function setLocale(?string $locale): void
     {
@@ -236,7 +231,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $married
+     * @param bool|null $married
      */
     public function setMarried(?bool $married): void
     {
@@ -244,7 +239,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $country
+     * @param null|string $country
      */
     public function setCountry(?string $country): void
     {
@@ -252,7 +247,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $lastName
+     * @param null|string $lastName
      */
     public function setLastName(?string $lastName): void
     {
@@ -260,7 +255,7 @@ class Questionnaire
     }
 
     /**
-     * @param mixed $firstName
+     * @param null|string $firstName
      */
     public function setFirstName(?string $firstName): void
     {
@@ -268,7 +263,7 @@ class Questionnaire
     }
 
     /**
-     * @param \DateTime $dateOfBirth
+     * @param \DateTime|null $dateOfBirth
      */
     public function setDateOfBirth(?\DateTime $dateOfBirth): void
     {
