@@ -16,15 +16,16 @@ class Questionnaire
      *     type="integer",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     *
+     * @var int
      */
-    protected $age;
+    private $age;
 
     /**
      * @Assert\NotBlank
      * @Assert\Url
+     * @var string
      */
-    protected $url;
+    private $url;
 
     /**
      * @Assert\NotBlank
@@ -32,67 +33,74 @@ class Questionnaire
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
      * )
-     *
+     * @var string
      */
-    protected $email;
+    private $email;
 
     /**
      * @Assert\NotBlank
-     * @Assert\Length(min = 8, max = 20, minMessage = "Min length is 8", maxMessage = "Max length is 20")
+     * @Assert\Length(min = 8, max = 20, minMessage = "Min length is  {{ limit }}", maxMessage = "Max length is {{ limit }}")
      * @Assert\Regex(pattern="/^\+?[0-9]+$/", message="number_only")
+     * @var string
      */
-    protected $phone;
+    private $phone;
 
     /**
      * @Assert\NotBlank
      * @Assert\Locale(
      *     canonicalize = true
      * )
+     * @var string
      */
-    protected $locale;
+    private $locale;
 
     /**
      * @Assert\Type(
      *     type="string"
      * )
+     * @var string
      */
-    protected $hobby;
+    private $hobby;
 
     /**
      * @Assert\NotBlank
      * @Assert\Country
+     * @var string
      */
-    protected $country;
+    private $country;
 
     /**
      * @Assert\Type(
      *     type="bool"
      * )
+     * @var bool
      */
-    protected $married;
+    private $married;
 
     /**
      * @Assert\NotBlank
      * @Assert\Type(
      *     type="string"
      * )
+     * @var string
      */
-    protected $lastName;
+    private $lastName;
 
     /**
      * @Assert\NotBlank
      * @Assert\Type(
      *     type="string"
      * )
+     * @var string
      */
-    protected $firstName;
+    private $firstName;
 
     /**
      * @Assert\NotNull
      * @Assert\Date
-     * @var \DateTime|string A "Y-m-d" formatted value
+     * @var \DateTime
      */
-    protected $dateOfBirth;
+    private $dateOfBirth;
 
     /**
      * @return int|null
