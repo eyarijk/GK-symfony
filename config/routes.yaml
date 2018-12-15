@@ -1,4 +1,8 @@
 news.index:
-    path: /
+    path: /news
     methods: [GET]
     controller: App\Controller\NewsController::index
+
+questionnaire.index:
+    path: /questionnaire
+    controller: App\Controller\QuestionnairesController::index
