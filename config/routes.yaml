@@ -6,3 +6,16 @@ news.index:
 questionnaire.index:
     path: /questionnaire
     controller: App\Controller\QuestionnairesController::index
+categories.index:
+    path: /categories
+    controller: App\Controller\CategoriesController::index
+    methods: [GET]
+categories.create:
+    path: /categories/create
+    controller: App\Controller\CategoriesController::create
+categories.show:
+    path: /categories/show/{slug}
+    controller: App\Controller\CategoriesController::show
+articles.index:
+    path: /articles
+    controller: App\Controller\ArticlesController::index

@@ -1,0 +1,33 @@
+{% extends 'layouts/public.html.twig' %}
+
+{% block title %}Categories ({{ categories|length }}){% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="my-4">Categories</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Visible</th>
+                    <th scope="col">Articles</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <th scope="row">{{ category.getId() }}</th>
+                        <td><a href="{{ path('categories.show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a></td>
+                        <td>{{ category.getIsEnabled()  ? 'Yes':'No' }}</td>
+                        <td>{{ category.getArticles()|length }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}
