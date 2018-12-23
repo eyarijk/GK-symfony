@@ -19,3 +19,6 @@ categories_show:
 articles_index:
     path: /articles
     controller: App\Controller\ArticlesController::index
+articles_period:
+    path: /articles/{start}/{finish}
+    controller: App\Controller\ArticlesController::showByPeriod

@@ -22,7 +22,6 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('slug', TextType::class)
             ->add('isEnabled', CheckboxType::class)
             ->add('parent', EntityType::class, [
                 'class' => Category::class,

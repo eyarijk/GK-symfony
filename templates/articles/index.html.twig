@@ -6,16 +6,18 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="my-4">Articles</h1>
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Filter by Categories</h4>
+            {% if categoriesForm is defined %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Filter by Categories</h4>
+                    </div>
+                    <div class="col-md-12">
+                        {{ form_start(categoriesForm, {'attr': {'novalidate': 'novalidate'}}) }}
+                        {{ form_widget(categoriesForm) }}
+                        {{ form_end(categoriesForm) }}
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    {{ form_start(categoriesForm, {'attr': {'novalidate': 'novalidate'}}) }}
-                    {{ form_widget(categoriesForm) }}
-                    {{ form_end(categoriesForm) }}
-                </div>
-            </div>
+            {% endif %}
             <table class="table">
                 <thead>
                 <tr>
@@ -46,7 +48,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-
+            {{ knp_pagination_render(articles) }}
         </div>
     </div>
 {% endblock %}
