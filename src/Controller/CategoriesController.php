@@ -50,7 +50,7 @@ class CategoriesController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('categories.show',[
+            return $this->redirectToRoute('categories_show',[
                 'slug' => $category->getSlug()
             ]);
         }

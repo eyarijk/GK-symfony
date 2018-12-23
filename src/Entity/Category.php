@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ * @UniqueEntity("slug")
  */
 class Category
 {
@@ -19,11 +22,18 @@ class Category
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="string"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\Type(
+     *     type="bool"
+     * )
      * @ORM\Column(type="boolean")
      */
     private $isEnabled;
@@ -34,7 +44,11 @@ class Category
     private $articles;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Type(
+     *     type="string"
+     * )
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
 

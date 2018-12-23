@@ -18,7 +18,12 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create();
 
-        $categories = $manager->getRepository(Category::class)->findAll();
+        $parentCategory = $this->getReference(CategoryFixtures::PARENT_CATEGORY_FOR_CATEGORIES);
+
+        $categories = $manager->getRepository(Category::class)
+            ->findBy([
+                'parent' => $parentCategory,
+            ]);
 
        for ($i = 0; $i < 20; $i++) {
             $article = new Article();

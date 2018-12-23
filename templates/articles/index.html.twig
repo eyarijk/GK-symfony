@@ -45,7 +45,7 @@
                         <td>{{ article.getIsEnabled()  ? 'Yes':'No' }}</td>
                         <td>
                             {% for category in article.getCategories() %}
-                                <a href="{{ path('categories.show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a>
+                                <a href="{{ path('categories_show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a>
                             {% endfor %}
                         </td>
                         <td>{{ article.getCreatedAt|date('Y-m-d H:i:s') }}</td>

@@ -20,7 +20,7 @@
                 {% for category in categories %}
                     <tr>
                         <th scope="row">{{ category.getId() }}</th>
-                        <td><a href="{{ path('categories.show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a></td>
+                        <td><a href="{{ path('categories_show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a></td>
                         <td>{{ category.getIsEnabled()  ? 'Yes':'No' }}</td>
                         <td>{{ category.getArticles()|length }}</td>
                     </tr>

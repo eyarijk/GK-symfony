@@ -39,7 +39,7 @@
                         Parent Category:
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ path('categories.show', {'slug': category.getParent().getSlug()}) }}">{{ category.getParent().getName() }}</a>
+                        <a href="{{ path('categories_show', {'slug': category.getParent().getSlug()}) }}">{{ category.getParent().getName() }}</a>
                     </div>
                 </div>
             {% endif %}
