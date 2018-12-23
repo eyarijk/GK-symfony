@@ -79,8 +79,10 @@ class ArticlesController extends AbstractController
             5
         );
 
-        return $this->render('articles/index.html.twig', [
+        return $this->render('articles/by_period_created.html.twig', [
             'articles' => $articles,
+            'start_date' => $start,
+            'finish_date' => $finish
         ]);
     }
 }

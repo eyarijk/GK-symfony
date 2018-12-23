@@ -1,0 +1,12 @@
+{% extends 'layouts/public.html.twig' %}
+
+{% block title %}Articles ({{ articles|length }}){% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="my-4">Articles By Period {{ start_date|date('Y-m-d') }} - {{ finish_date|date('Y-m-d') }}</h1>
+            {% include '/articles/_articles_table.html.twig' with {'articles': articles} %}
+        </div>
+    </div>
+{% endblock %}
