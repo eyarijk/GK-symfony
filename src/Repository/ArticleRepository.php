@@ -46,11 +46,10 @@ class ArticleRepository extends ServiceEntityRepository
      * @param DateTime $finish
      * @return Query
      */
-    public function findByPeriodQuery(DateTime $start, DateTime $finish): Query
+    public function findByPeriodCreatedQuery(DateTime $start, DateTime $finish): Query
     {
         return $this->createQueryBuilder('a')
-            ->where('a.createdAt >= :start')
-            ->andWhere('a.createdAt <= :finish')
+            ->where('a.createdAt BETWEEN :start AND :finish')
             ->setParameters([
                 ':start' => $start,
                 ':finish' => $finish,

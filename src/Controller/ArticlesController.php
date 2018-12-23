@@ -65,12 +65,12 @@ class ArticlesController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function showByPeriod(\DateTime $start, \DateTime $finish, PaginatorInterface $paginator, Request $request): Response
+    public function showByPeriodCreated(\DateTime $start, \DateTime $finish, PaginatorInterface $paginator, Request $request): Response
     {
         $articles = $this
             ->getDoctrine()
             ->getRepository(Article::class)
-            ->findByPeriodQuery($start, $finish)
+            ->findByPeriodCreatedQuery($start, $finish)
         ;
 
         $articles = $paginator->paginate(

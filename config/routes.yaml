@@ -19,6 +19,6 @@ categories_show:
 articles_index:
     path: /articles
     controller: App\Controller\ArticlesController::index
-articles_period:
+articles_period_created:
     path: /articles/{start}/{finish}
-    controller: App\Controller\ArticlesController::showByPeriod
+    controller: App\Controller\ArticlesController::showByPeriodCreated
