@@ -21,9 +21,9 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      * @param array $categoryIds
-     * @return mixed
+     * @return Article[]
      */
-    public function findArticleByCategoryIds(array $categoryIds)
+    public function findArticleByCategoryIds(array $categoryIds): array
     {
         return $this->createQueryBuilder('a')
             ->innerJoin('a.categories','c')

@@ -48,8 +48,8 @@
                                 <a href="{{ path('categories.show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a>
                             {% endfor %}
                         </td>
-                        <td>{{ article.getCreatedAt().format('Y-m-d H:i:s') }}</td>
-                        <td>{{ article.getUpdatedAt().format('Y-m-d H:i:s') }}</td>
+                        <td>{{ article.getCreatedAt|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ article.getUpdatedAt|date('Y-m-d H:i:s') }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

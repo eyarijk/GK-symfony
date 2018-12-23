@@ -9,11 +9,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
 {
+    public const CATEGORIES_FOR_ARTICLES = 'categories-for-articles';
+
     /**
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager): void
     {
+//         $categories = [];
+
          $faker = Factory::create();
 
          $parentCategory = new Category();
@@ -24,6 +28,8 @@ class CategoryFixtures extends Fixture
          $manager->persist($parentCategory);
          $manager->flush();
 
+//         $categories[] = $parentCategory;
+
          for ($i = 0; $i < 30; $i++) {
              $category = new Category();
              $category->setName($faker->name);
@@ -31,8 +37,11 @@ class CategoryFixtures extends Fixture
              $category->setIsEnabled($faker->boolean);
              $category->setParent($parentCategory);
              $manager->persist($category);
+//             $categories[] = $category;
          }
 
          $manager->flush();
+
+//        $this->addReference(self::CATEGORIES_FOR_ARTICLES,$categories);
     }
 }

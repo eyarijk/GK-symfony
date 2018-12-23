@@ -38,6 +38,10 @@ class ArticlesController extends AbstractController
             ->getOptionsForFilter()
         ;
 
-        return $this->render('articles/index.html.twig',compact('articles','categories','categoriesFilter'));
+        return $this->render('articles/index.html.twig',[
+            'articles'          => $articles,
+            'categories'        => $categories,
+            'categoriesFilter'  => $categoriesFilter
+        ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class CategoriesController
@@ -24,7 +25,9 @@ class CategoriesController extends AbstractController
             ->findAll()
         ;
 
-        return $this->render('categories/index.html.twig',compact('categories'));
+        return $this->render('categories/index.html.twig',[
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -71,9 +74,11 @@ class CategoriesController extends AbstractController
         ;
 
         if ($category === null) {
-            return new Response('Page not found. Category slug: '.$slug, Response::HTTP_NOT_FOUND);
+           throw new NotFoundHttpException('Page not found. Category slug: '.$slug);
         }
 
-        return $this->render('categories/show.html.twig',compact('category'));
+        return $this->render('categories/show.html.twig',[
+            'category' => $category
+        ]);
     }
 }
