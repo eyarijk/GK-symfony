@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -20,15 +22,19 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param array $categoryIds
+     * @param ArrayCollection $categories
      * @return Article[]
      */
-    public function findArticleByCategoryIds(array $categoryIds): array
+    public function findArticleByCategoryIds(ArrayCollection $categories): array
     {
+        $categoriesIds = $categories->map(function (Category $category) {
+            return $category->getId();
+        });
+
         return $this->createQueryBuilder('a')
             ->innerJoin('a.categories', 'c')
             ->where('c.id IN (:categories)')
-            ->setParameter(':categories', $categoryIds)
+            ->setParameter(':categories', $categoriesIds)
             ->getQuery()
             ->getResult()
         ;

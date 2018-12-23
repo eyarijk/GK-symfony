@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Category;
+use App\Form\ArticleFilterType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +16,15 @@ class ArticlesController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $categoriesFilter = $request->get('categories', []);
+        $categoriesForm = $this->createForm(ArticleFilterType::class);
+
+        $categoriesForm->handleRequest($request);
+
+        $categoriesFilter = [];
+
+        if ($categoriesForm->isSubmitted() && $categoriesForm->isValid()) {
+            $categoriesFilter = $categoriesForm->getData()['categories'];
+        }
 
         if (\count($categoriesFilter) > 0) {
             $articles = $this
@@ -32,16 +40,9 @@ class ArticlesController extends AbstractController
             ;
         }
 
-        $categories = $this
-            ->getDoctrine()
-            ->getRepository(Category::class)
-            ->getOptionsForFilter()
-        ;
-
         return $this->render('articles/index.html.twig', [
             'articles' => $articles,
-            'categories' => $categories,
-            'categoriesFilter' => $categoriesFilter,
+            'categoriesForm' => $categoriesForm->createView(),
         ]);
     }
 }

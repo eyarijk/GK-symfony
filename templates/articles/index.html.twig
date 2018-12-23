@@ -11,17 +11,9 @@
                     <h4>Filter by Categories</h4>
                 </div>
                 <div class="col-md-12">
-                    <form method="GET">
-                        <div class="form-group">
-                            <label for="categories">Categories</label>
-                            <select class="form-control" multiple name="categories[]" id="categories">
-                                {% for category in categories %}
-                                    <option {% if category.id in categoriesFilter %} selected {% endif %} value="{{ category.id }}">{{ category.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <button class="btn btn-primary">Search</button>
-                    </form>
+                    {{ form_start(categoriesForm, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_widget(categoriesForm) }}
+                    {{ form_end(categoriesForm) }}
                 </div>
             </div>
             <table class="table">
