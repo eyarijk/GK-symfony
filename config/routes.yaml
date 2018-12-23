@@ -1,8 +1,21 @@
-news.index:
+news_index:
     path: /news
     methods: [GET]
     controller: App\Controller\NewsController::index
 
-questionnaire.index:
+questionnaire_index:
     path: /questionnaire
     controller: App\Controller\QuestionnairesController::index
+categories_index:
+    path: /categories
+    controller: App\Controller\CategoriesController::index
+    methods: [GET]
+categories_create:
+    path: /categories/create
+    controller: App\Controller\CategoriesController::create
+categories_show:
+    path: /categories/show/{slug}
+    controller: App\Controller\CategoriesController::show
+articles_index:
+    path: /articles
+    controller: App\Controller\ArticlesController::index

@@ -5,7 +5,7 @@ namespace App\Service;
 class NewsApiClient
 {
     /**
-     * API uri for news
+     * API uri for news.
      */
     public const URL = 'https://newsapi.org/v2/everything';
 
@@ -15,13 +15,13 @@ class NewsApiClient
     private $apiKey;
 
     /**
-     * Default now
+     * Default now.
      * @var \DateTime
      */
     private $dateFrom;
 
     /**
-     * Default sortBy = publishedAt
+     * Default sortBy = publishedAt.
      * @var string
      */
     private $sortBy;
@@ -31,7 +31,7 @@ class NewsApiClient
      * @param string $apiKey
      * @param string $sortBy
      */
-    public function __construct(string $apiKey,string $sortBy = 'publishedAt')
+    public function __construct(string $apiKey, string $sortBy = 'publishedAt')
     {
         $this->apiKey = $apiKey;
         $this->sortBy = $sortBy;
@@ -45,6 +45,7 @@ class NewsApiClient
     public function setDate(\DateTime $date): self
     {
         $this->dateFrom = $date;
+
         return $this;
     }
 
@@ -55,6 +56,7 @@ class NewsApiClient
     public function setSortBy(string $sortBy): self
     {
         $this->sortBy = $sortBy;
+
         return $this;
     }
 
@@ -65,6 +67,7 @@ class NewsApiClient
     public function getNews(string $query): array
     {
         $jsonDate = $this->makeRequest($query);
+
         return json_decode($jsonDate)->articles;
     }
 
@@ -75,12 +78,12 @@ class NewsApiClient
     private function makeRequest(string $query): string
     {
         $params = http_build_query([
-            'q'      => $query,
-            'from'   => $this->dateFrom->format('Y-m-d'),
+            'q' => $query,
+            'from' => $this->dateFrom->format('Y-m-d'),
             'sortBy' => $this->sortBy,
-            'apiKey' => $this->apiKey
+            'apiKey' => $this->apiKey,
         ]);
 
-        return file_get_contents(self::URL.'?'.$params);
+        return file_get_contents(self::URL . '?' . $params);
     }
 }

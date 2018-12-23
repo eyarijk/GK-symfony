@@ -1,0 +1,21 @@
+{% extends 'layouts/public.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <h1 class="my-4">New Category</h1>
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+
+{% endblock %}

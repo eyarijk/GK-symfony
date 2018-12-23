@@ -1,0 +1,52 @@
+{% extends 'layouts/public.html.twig' %}
+
+{% block title %}Category: {{ category.getName() }}{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <h1 class="my-4">Category: {{ category.getName() }}</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    ID:
+                </div>
+                <div class="col-md-6">
+                    {{ category.getId() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    Slug:
+                </div>
+                <div class="col-md-6">
+                    {{ category.getSlug() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    Visible:
+                </div>
+                <div class="col-md-6">
+                    {{ category.getIsEnabled() ? 'Yes' : 'No' }}
+                </div>
+            </div>
+            {% if category.getParent() %}
+                <div class="row">
+                    <div class="col-md-6">
+                        Parent Category:
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ path('categories_show', {'slug': category.getParent().getSlug()}) }}">{{ category.getParent().getName() }}</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+
+{% endblock %}

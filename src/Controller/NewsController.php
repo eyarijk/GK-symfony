@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Service\NewsApiClient;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NewsController extends AbstractController
 {
     public function index(Request $request): Response
     {
-        $q = $request->get('searchQuery','symfony');
+        $q = $request->get('searchQuery', 'symfony');
 
         $fromDate = new \DateTime($request->get('from') ?? 'now');
 
@@ -20,10 +20,10 @@ class NewsController extends AbstractController
             ->getNews($q);
 
         return $this->render('news/index.html.twig', [
-            'articles'      => $articles,
-            'newsQuery'     => $q,
-            'fromDate'      => $fromDate,
-            'articlesCount' => \count($articles)
+            'articles' => $articles,
+            'newsQuery' => $q,
+            'fromDate' => $fromDate,
+            'articlesCount' => \count($articles),
         ]);
     }
 }
