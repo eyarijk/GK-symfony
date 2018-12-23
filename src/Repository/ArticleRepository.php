@@ -27,7 +27,7 @@ class ArticleRepository extends ServiceEntityRepository
      * @param ArrayCollection $categories
      * @return Query
      */
-    public function findArticleByCategoryIds(ArrayCollection $categories): Query
+    public function findArticleByCategoriesQuery(ArrayCollection $categories): Query
     {
         $categoriesIds = $categories->map(function (Category $category) {
             return $category->getId();
@@ -46,7 +46,7 @@ class ArticleRepository extends ServiceEntityRepository
      * @param DateTime $finish
      * @return Query
      */
-    public function findByPeriod(DateTime $start, DateTime $finish): Query
+    public function findByPeriodQuery(DateTime $start, DateTime $finish): Query
     {
         return $this->createQueryBuilder('a')
             ->where('a.createdAt >= :start')

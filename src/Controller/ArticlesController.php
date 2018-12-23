@@ -33,7 +33,7 @@ class ArticlesController extends AbstractController
             $articles = $this
                 ->getDoctrine()
                 ->getRepository(Article::class)
-                ->findArticleByCategoryIds($categoriesFilter)
+                ->findArticleByCategoriesQuery($categoriesFilter)
             ;
         } else {
             $articles = $this
@@ -70,7 +70,7 @@ class ArticlesController extends AbstractController
         $articles = $this
             ->getDoctrine()
             ->getRepository(Article::class)
-            ->findByPeriod($start, $finish)
+            ->findByPeriodQuery($start, $finish)
         ;
 
         $articles = $paginator->paginate(
