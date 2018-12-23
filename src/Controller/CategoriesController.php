@@ -4,14 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class CategoriesController
- * @package App\Controller
+ * Class CategoriesController.
  */
 class CategoriesController extends AbstractController
 {
@@ -25,8 +24,8 @@ class CategoriesController extends AbstractController
             ->findAll()
         ;
 
-        return $this->render('categories/index.html.twig',[
-            'categories' => $categories
+        return $this->render('categories/index.html.twig', [
+            'categories' => $categories,
         ]);
     }
 
@@ -41,7 +40,6 @@ class CategoriesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $category = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -50,13 +48,13 @@ class CategoriesController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('categories_show',[
-                'slug' => $category->getSlug()
+            return $this->redirectToRoute('categories_show', [
+                'slug' => $category->getSlug(),
             ]);
         }
 
-        return $this->render('categories/create.html.twig',[
-            'form' => $form->createView()
+        return $this->render('categories/create.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
@@ -69,16 +67,16 @@ class CategoriesController extends AbstractController
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy([
-                'slug' => $slug
+                'slug' => $slug,
             ])
         ;
 
         if ($category === null) {
-           throw new NotFoundHttpException('Page not found. Category slug: '.$slug);
+            throw new NotFoundHttpException('Page not found. Category slug: ' . $slug);
         }
 
-        return $this->render('categories/show.html.twig',[
-            'category' => $category
+        return $this->render('categories/show.html.twig', [
+            'category' => $category,
         ]);
     }
 }

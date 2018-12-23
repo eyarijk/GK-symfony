@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -22,7 +22,7 @@ class Category
     private $id;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
@@ -44,7 +44,7 @@ class Category
     private $articles;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
@@ -71,7 +71,7 @@ class Category
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -79,7 +79,7 @@ class Category
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getSlug(): ?string
     {
@@ -128,7 +128,7 @@ class Category
     }
 
     /**
-     * @return Collection|Article[]
+     * @return Article[]|Collection
      */
     public function getArticles(): Collection
     {
@@ -172,10 +172,10 @@ class Category
     }
 
     /**
-     * @param null|Category $parent
+     * @param self $parent
      * @return Category
      */
-    public function setParent(?Category $parent): self
+    public function setParent(self $parent): self
     {
         $this->parent = $parent;
 

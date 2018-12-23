@@ -4,13 +4,13 @@ namespace App\Form;
 
 use App\Entity\Category;
 use Doctrine\ORM\EntityRepository;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CategoryType extends AbstractType
 {
@@ -24,7 +24,7 @@ class CategoryType extends AbstractType
             ->add('name', TextType::class)
             ->add('slug', TextType::class)
             ->add('isEnabled', CheckboxType::class)
-            ->add('parent',EntityType::class,[
+            ->add('parent', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'query_builder' => function (EntityRepository $er) {
@@ -35,11 +35,10 @@ class CategoryType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'Create Category',
                 'attr' => [
-                    'class' => 'btn btn-primary'
-                ]
+                    'class' => 'btn btn-primary',
+                ],
             ])
         ;
-
     }
 
     /**

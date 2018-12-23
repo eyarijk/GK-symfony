@@ -5,13 +5,12 @@ namespace App\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Questionnaire
- * @package App\Entity
+ * Class Questionnaire.
  */
 class Questionnaire
 {
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="integer",
      *     message="The value {{ value }} is not a valid {{ type }}."
@@ -21,34 +20,34 @@ class Questionnaire
     private $age;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Url
+     * @Assert\NotBlank()
+     * @Assert\Url()
      * @var string
      */
     private $url;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
+     *     message="The email '{{ value }}' is not a valid email.",
+     *     checkMX=true
      * )
      * @var string
      */
     private $email;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Length(min = 8, max = 20, minMessage = "Min length is  {{ limit }}", maxMessage = "Max length is {{ limit }}")
+     * @Assert\NotBlank()
+     * @Assert\Length(min=8, max=20, minMessage="Min length is  {{ limit }}", maxMessage="Max length is {{ limit }}")
      * @Assert\Regex(pattern="/^\+?[0-9]+$/", message="number_only")
      * @var string
      */
     private $phone;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Locale(
-     *     canonicalize = true
+     *     canonicalize=true
      * )
      * @var string
      */
@@ -63,8 +62,8 @@ class Questionnaire
     private $hobby;
 
     /**
-     * @Assert\NotBlank
-     * @Assert\Country
+     * @Assert\NotBlank()
+     * @Assert\Country()
      * @var string
      */
     private $country;
@@ -78,7 +77,7 @@ class Questionnaire
     private $married;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
@@ -87,7 +86,7 @@ class Questionnaire
     private $lastName;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
@@ -96,8 +95,8 @@ class Questionnaire
     private $firstName;
 
     /**
-     * @Assert\NotNull
-     * @Assert\Date
+     * @Assert\NotNull()
+     * @Assert\Date()
      * @var \DateTime
      */
     private $dateOfBirth;
@@ -111,7 +110,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -119,7 +118,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -127,7 +126,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getPhone(): ?string
     {
@@ -135,7 +134,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getLocale(): ?string
     {
@@ -143,7 +142,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getCountry(): ?string
     {
@@ -159,7 +158,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -167,7 +166,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getHobby(): ?string
     {
@@ -175,7 +174,7 @@ class Questionnaire
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -199,7 +198,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $email
+     * @param string|null $email
      */
     public function setEmail(?string $email): void
     {
@@ -207,7 +206,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $hobby
+     * @param string|null $hobby
      */
     public function setHobby(?string $hobby): void
     {
@@ -215,7 +214,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $url
+     * @param string|null $url
      */
     public function setUrl(?string $url): void
     {
@@ -223,7 +222,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $phone
+     * @param string|null $phone
      */
     public function setPhone(?string $phone): void
     {
@@ -231,7 +230,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $locale
+     * @param string|null $locale
      */
     public function setLocale(?string $locale): void
     {
@@ -247,7 +246,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $country
+     * @param string|null $country
      */
     public function setCountry(?string $country): void
     {
@@ -255,7 +254,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $lastName
+     * @param string|null $lastName
      */
     public function setLastName(?string $lastName): void
     {
@@ -263,7 +262,7 @@ class Questionnaire
     }
 
     /**
-     * @param null|string $firstName
+     * @param string|null $firstName
      */
     public function setFirstName(?string $firstName): void
     {

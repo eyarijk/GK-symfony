@@ -2,10 +2,10 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 
 class CategoryFixtures extends Fixture
 {
@@ -16,28 +16,27 @@ class CategoryFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-         $faker = Factory::create();
+        $faker = Factory::create();
 
-         $parentCategory = new Category();
-         $parentCategory->setName($faker->name);
-         $parentCategory->setSlug($faker->slug);
-         $parentCategory->setIsEnabled($faker->boolean);
+        $parentCategory = new Category();
+        $parentCategory->setName($faker->name);
+        $parentCategory->setSlug($faker->slug);
+        $parentCategory->setIsEnabled($faker->boolean);
 
-         $manager->persist($parentCategory);
-         $manager->flush();
+        $manager->persist($parentCategory);
+        $manager->flush();
 
+        for ($i = 0; $i < 30; ++$i) {
+            $category = new Category();
+            $category->setName($faker->name);
+            $category->setSlug($faker->slug);
+            $category->setIsEnabled($faker->boolean);
+            $category->setParent($parentCategory);
+            $manager->persist($category);
+        }
 
-         for ($i = 0; $i < 30; $i++) {
-             $category = new Category();
-             $category->setName($faker->name);
-             $category->setSlug($faker->slug);
-             $category->setIsEnabled($faker->boolean);
-             $category->setParent($parentCategory);
-             $manager->persist($category);
-         }
+        $manager->flush();
 
-         $manager->flush();
-
-        $this->addReference(self::PARENT_CATEGORY_FOR_CATEGORIES,$parentCategory);
+        $this->addReference(self::PARENT_CATEGORY_FOR_CATEGORIES, $parentCategory);
     }
 }

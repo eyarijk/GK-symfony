@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -22,7 +22,7 @@ class Article
     private $id;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
@@ -31,7 +31,7 @@ class Article
     private $title;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
@@ -48,13 +48,13 @@ class Article
     private $isEnabled;
 
     /**
-     * @Assert\DateTime
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
     /**
-     * @Assert\DateTime
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
@@ -78,7 +78,7 @@ class Article
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -97,7 +97,7 @@ class Article
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getSlug(): ?string
     {
@@ -173,7 +173,7 @@ class Article
     }
 
     /**
-     * @return Collection|Category[]
+     * @return Category[]|Collection
      */
     public function getCategories(): Collection
     {

@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\Article;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 
 class ArticleFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -25,7 +25,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
                 'parent' => $parentCategory,
             ]);
 
-       for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 20; ++$i) {
             $article = new Article();
             $article->setIsEnabled($faker->boolean);
             $article->setTitle($faker->title);
@@ -48,7 +48,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            CategoryFixtures::class
+            CategoryFixtures::class,
         ];
     }
 }

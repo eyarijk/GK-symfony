@@ -24,8 +24,8 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function getOptionsForFilter(): array
     {
-         return $this->createQueryBuilder('c')
-            ->select(['c.id','c.name'])
+        return $this->createQueryBuilder('c')
+            ->select(['c.id', 'c.name'])
             ->orderBy('c.name', 'ASC')
             ->getQuery()
             ->getResult()
