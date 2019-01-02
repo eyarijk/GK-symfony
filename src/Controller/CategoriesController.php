@@ -7,7 +7,6 @@ use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class CategoriesController.
@@ -59,22 +58,11 @@ class CategoriesController extends AbstractController
     }
 
     /**
-     * @param string $slug
+     * @param Category $category
      * @return Response
      */
-    public function show(string $slug): Response
+    public function show(Category $category): Response
     {
-        $category = $this->getDoctrine()
-            ->getRepository(Category::class)
-            ->findOneBy([
-                'slug' => $slug,
-            ])
-        ;
-
-        if ($category === null) {
-            throw new NotFoundHttpException('Page not found. Category slug: ' . $slug);
-        }
-
         return $this->render('categories/show.html.twig', [
             'category' => $category,
         ]);

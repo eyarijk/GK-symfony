@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -44,11 +45,12 @@ class Category
     private $articles;
 
     /**
-     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string"
      * )
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Blameable(field="name", on="update")
      */
     private $slug;
 

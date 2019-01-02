@@ -1,0 +1,10 @@
+App\Entity\Category:
+  category_main:
+    name: Main
+    slug: main
+    is_enabled: true
+  category_{2..10}:
+    name: <name()>
+    slug: <slug()>
+    is_enabled: <boolean()>
+    parent: '@category_main'

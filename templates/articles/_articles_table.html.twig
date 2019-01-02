@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Slug</th>
+        <th scope="col">Enabled</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for article in articles %}
+        <tr>
+            <th scope="row">{{ article.getId() }}</th>
+            <td>{{ article.getTitle() }}</td>
+            <td>{{ article.getSlug() }}</td>
+            <td>{{ article.getIsEnabled()  ? 'Yes':'No' }}</td>
+            <td>
+                {% for category in article.getCategories() %}
+                    <a href="{{ path('categories_show',{'slug': category.getSlug()}) }}">{{ category.getName() }}</a>
+                {% endfor %}
+            </td>
+            <td>{{ article.getCreatedAt|date('Y-m-d H:i:s') }}</td>
+            <td>{{ article.getUpdatedAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{{ knp_pagination_render(articles) }}

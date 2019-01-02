@@ -4,8 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -23,9 +25,9 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      * @param ArrayCollection $categories
-     * @return Article[]
+     * @return Query
      */
-    public function findArticleByCategoryIds(ArrayCollection $categories): array
+    public function findArticleByCategoriesQuery(ArrayCollection $categories): Query
     {
         $categoriesIds = $categories->map(function (Category $category) {
             return $category->getId();
@@ -36,7 +38,23 @@ class ArticleRepository extends ServiceEntityRepository
             ->where('c.id IN (:categories)')
             ->setParameter(':categories', $categoriesIds)
             ->getQuery()
-            ->getResult()
+        ;
+    }
+
+    /**
+     * @param DateTime $start
+     * @param DateTime $finish
+     * @return Query
+     */
+    public function findByPeriodCreatedQuery(DateTime $start, DateTime $finish): Query
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.createdAt BETWEEN :start AND :finish')
+            ->setParameters([
+                ':start' => $start,
+                ':finish' => $finish,
+            ])
+            ->getQuery()
         ;
     }
 }
